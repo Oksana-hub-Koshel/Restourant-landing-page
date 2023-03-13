@@ -8,14 +8,14 @@ const App = () => (
   <div>
     <Navbar />
     <Header />
-    <AboutUs />
-    <SpecialMenu />
-    <Chef />
-    <Intro />
-    <Laurels />
-    <Gallery />
-    <FindUs />
-    <Footer />
+    {/*<AboutUs />*/}
+    {/*<SpecialMenu />*/}
+    {/*<Chef />*/}
+    {/*<Intro />*/}
+    {/*<Laurels />*/}
+    {/*<Gallery />*/}
+    {/*<FindUs />*/}
+    {/*<Footer />*/}
   </div>
 );
 

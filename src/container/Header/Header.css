@@ -1,0 +1,22 @@
+.app__header{
+    background-color: var(--color-black);
+}
+.app__header-h1{
+    font-family: var(--font-base);
+    color: var(--color-golden);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 117px;
+    font-size: 80px;
+}
+.app_wrapper_img img{
+width: 80%;
+}
+.button_customer{
+    font-family: var(--font-base);
+   background-color: var(--color-crimson);
+    padding: 0.5rem;
+    border-radius: 20px;
+    color: black;
+    font-weight: bolder;
+}
