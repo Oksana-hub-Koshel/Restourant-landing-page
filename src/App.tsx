@@ -8,7 +8,7 @@ const App = () => (
   <div>
     <Navbar />
     <Header />
-    {/*<AboutUs />*/}
+    <AboutUs />
     {/*<SpecialMenu />*/}
     {/*<Chef />*/}
     {/*<Intro />*/}

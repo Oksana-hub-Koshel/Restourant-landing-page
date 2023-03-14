@@ -2,6 +2,7 @@ import React from 'react';
 import {images} from "../../constants";
 import './Header.css';
 import {SubHeading} from "../../components";
+import Button from "../../components/Button/Button";
 
 
 const Header = () => (
@@ -12,7 +13,8 @@ const Header = () => (
           <p className="p__opensans" style={{margin: '2rem 0'}}>
               Sit tellus lobortis sed senectus vivamus molestie. Condimentum volutpat morbi facilisis quam scelerisque sapien. Et, penatibus aliquam amet tellus
           </p>
-          <button className="button_customer" type="button">Explore Menu</button>
+          <Button onClick={()=>{}}>Explore Mene</Button>
+          {/*<button className="button_customer">Explore Menu</button>*/}
       </div>
       <div className="app_wrapper_img">
           <img src={images.welcome} alt="header_img"/>

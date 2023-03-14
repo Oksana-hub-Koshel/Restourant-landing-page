@@ -8,8 +8,8 @@ type TitleProps={
 
 const SubHeading = ({title}:TitleProps) => (
   <div style={{marginBottom:"1rem"}}>
- <p className="p__cormorant" style={{color:"black"}}>{title}</p>
-      <img src={images.spoon} className="spoon_img"/>
+ <p className="p__cormorant" >{title}</p>
+      <img src={images.spoon} className="spoon_img" style={{height:"20"}}/>
   </div>
 );
 
