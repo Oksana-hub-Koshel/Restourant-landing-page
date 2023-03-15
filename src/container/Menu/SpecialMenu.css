@@ -68,6 +68,9 @@ width: 100%;
     .app__specialMenu-menu-img {
         width: 100%;
     }
+    .app__specialMenu-menu-img img{
+        height: 500px;
+    }
 
     .app__specialMenu-menu-heading {
         font-size: 35px;
