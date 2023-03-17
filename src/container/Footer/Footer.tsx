@@ -6,7 +6,7 @@ import Newsletter from "../../components/Footer/Newsletter";
 import {images} from "../../constants"
 
 const Footer = () => (
-    <div className="app__footer section__padding">
+    <div className="app__footer section__padding" id="contacts">
         <FooterOverlay/>
         <Newsletter/>
         <div className="app__footer-links">

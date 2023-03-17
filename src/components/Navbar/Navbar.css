@@ -5,6 +5,10 @@
     align-items: center;
     background-color: var(--color-black);
     padding: 1rem 2rem;
+    position: sticky;
+    z-index: 1000;
+    top: 0px;
+    box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.15);
 }
 
 .app_logo{
@@ -27,6 +31,9 @@
 .app_navbar_links li{
     margin: 0 1rem;
     cursor:pointer;
+}
+.app_links > .active{
+    border-bottom: 1px solid var(--color-golden);
 }
 .app_navbar_links li:hover{
   color: var(--color-grey);

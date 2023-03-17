@@ -3,37 +3,46 @@ import "./Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import images from "../../constants/images";
-import { Link, NavLink } from "react-router-dom";
+
+import { Link, animateScroll as scroll } from "react-scroll";
+
 
 const Navbar = () => {
-  const [toogleMenu, setToogleMenu] = useState(false);
+    const [toogleMenu, setToogleMenu] = useState(false);
+
+    const  scrollToTop = () => {
+        scroll.scrollToTop();
+    };
   return (
     <nav className="app__navbar">
-      <div className="app_logo">
+      <div className="app_logo" onClick={scrollToTop} >
         <img src={images.gericht} alt="logo" />
       </div>
       <ul className="app_navbar_links">
         <li className="app_links">
-          <NavLink to="/home">Home</NavLink>
+          <Link to="home"  spy={true}   smooth={true}  duration={500}>Home</Link>
         </li>
         <li className="app_links">
-          <NavLink to="/about">About</NavLink>
+          <Link to="about"  spy={true} smooth={true}  duration={500}   offset={100}>About</Link>
         </li>
         <li className="app_links">
-          <NavLink to="/menu">Menu</NavLink>
+          <Link to="menu"  spy={true} smooth={true}  duration={500} offset={30}>Menu</Link>
         </li>
         <li className="app_links">
-          <NavLink to="/award">Award</NavLink>
+          <Link to="award"  spy={true} smooth={true}  duration={500}>Award</Link>
         </li>
+          <li className="app_links">
+              <Link to="contacts"  spy={true} smooth={true}  duration={500}  offset={-100}>Contacts</Link>
+          </li>
       </ul>
       <div className="log_link_block">
-        <NavLink to="/login" className="log_link">
+        <Link to="/login" className="log_link">
           Log In / Register
-        </NavLink>
+        </Link>
         <div />
-        <NavLink to="/book" className="book_table">
+        <Link to="/book" className="book_table">
           Book table
-        </NavLink>
+        </Link>
       </div>
 
       <div className="app__navbar_smallscreen">
@@ -56,16 +65,16 @@ const Navbar = () => {
             />
             <ul className="app_navbar_smallscreen_links">
               <li className="app_links">
-                <NavLink to="/home">Home</NavLink>
+                <Link to="/home">Home</Link>
               </li>
               <li className="app_links">
-                <NavLink to="/about">About</NavLink>
+                <Link to="/about">About</Link>
               </li>
               <li className="app_links">
-                <NavLink to="/menu">Menu</NavLink>
+                <Link to="/menu">Menu</Link>
               </li>
               <li className="app_links">
-                <NavLink to="/award">Award</NavLink>
+                <Link to="/award">Award</Link>
               </li>
             </ul>
           </div>

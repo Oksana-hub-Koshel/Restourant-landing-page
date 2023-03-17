@@ -23,7 +23,7 @@ const AwardCard=({title,imgUrl,subtitle}:AwardProp)=>{
 
 }
 const Laurels = () => (
-    <div className="app__bg app__wrapper section__padding">
+    <div className="app__bg app__wrapper section__padding" id="award">
         <div className="app__wrapper_info">
             <SubHeading title={"Awards & recognition"}/>
             <h1 className="headtext__cormorant">Our Laurels</h1>
