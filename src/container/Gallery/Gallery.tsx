@@ -11,7 +11,7 @@ const galleryImages=[images.gallery01, images.gallery02, images.gallery03]
 const Gallery = () => {
     const scrollRef:React.MutableRefObject<any>=useRef(null)
 
-    const scroll=(direction:string)=>{
+    const scroll=(direction:'left' | 'right'):void=>{
         const {current}=scrollRef
 
         if(direction==="left"){

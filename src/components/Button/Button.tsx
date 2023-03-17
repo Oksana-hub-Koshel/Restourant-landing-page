@@ -2,7 +2,7 @@ import React from 'react';
 import "./button.css"
 
 interface IProps {
-    children?: string,
+    children: React.ReactNode
     onClick: () => void
 }
 
