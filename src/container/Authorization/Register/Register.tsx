@@ -1,29 +1,42 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
-import {useForm} from "react-hook-form";
+import {useForm, FormProvider, SubmitHandler,} from "react-hook-form";
 import "./Registration.css"
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 interface ModalProps {
-
-    title: string,
     onClose: () => void
 }
 
-export const Register = ({ title, onClose}: ModalProps) => {
+
+const REG_EXP=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const schema = yup.object({
+    username: yup.string().min(3).required(),
+    password: yup.string().min(5).max(10).required(),
+    email:yup.string().optional().matches(REG_EXP, 'Password is invalid').required()
+}).required();
+
+type FormData = yup.InferType<typeof schema>;
+
+
+export const Register = ({onClose}: ModalProps) => {
 
     const [active, setActive] = useState(false);
 
-    const {
-        register,
-        formState: { errors, isValid },
-        handleSubmit,
-        reset,
-    } = useForm({ mode: "onBlur" });
+    const { register, handleSubmit,reset, formState: { errors, isValid } } = useForm<FormData>({
+        resolver: yupResolver(schema),
+        mode: "onBlur",
+    });
 
-    const onSubmit = () => {
-        // console.log(JSON.stringify(data));
-        reset();
+
+    const onSubmit: SubmitHandler<FormData> = data => {
+        console.log((JSON.stringify(data)));
+                reset();
+                onClose()
     };
+
     return (
         <>
             <div style={{
@@ -60,6 +73,7 @@ export const Register = ({ title, onClose}: ModalProps) => {
                                     <a onClick={() => setActive(true)}>Registration</a>
                                 </div>
                             </div>
+
                             <form
                                 className={!active ? "form_container" : "form_container2"}
                                 onSubmit={handleSubmit(onSubmit)}
@@ -67,53 +81,60 @@ export const Register = ({ title, onClose}: ModalProps) => {
                             >
                                 <div className="input_row1">
                                     {active ? <label>Username</label> : <label>Username</label>}
-                                    <input
-                                        {...register("username", {
-                                            required: "Field is not required",
-                                            minLength: {
-                                                value: 3,
-                                                message: "At least 3 characters",
-                                            },
-                                        })}
-                                    />
-                                    {/*<div className={s.error}>{errors?.username?.message}</div>*/}
+                                    {/*<input*/}
+                                    {/*    {...register("username", {*/}
+                                    {/*        required: "Field is not required",*/}
+                                    {/*        minLength: {*/}
+                                    {/*            value: 3,*/}
+                                    {/*            message: "At least 3 characters",*/}
+                                    {/*        },*/}
+                                    {/*    })}*/}
+                                    {/*/>*/}
+                                    <input {...register("username")} />
+                                    <div className="error">{errors.username?.message}</div>
+                                    {/*<div className="error">{errors["username"]?.message}</div>*/}
+
                                 </div>
 
                                 <div className="input_row2">
                                     {active ? <label>Password</label> : <label>Password</label>}
 
-                                    <input
-                                                {...register("password", {
-                                                    required: "Field is not required",
-                                                    minLength: {
-                                                        value: 8,
-                                                        message: "Password must have at least 8 characters",
-                                                    },
-                                                    pattern: {
-                                                        value: /(?=.*[A-Z])/g,
-                                                        message:
-                                                            "Password must contain at least one capital letter ",
-                                                    },
-                                                })}
-                                            />
-                                            {/*<div className={s.error}>{errors?.password?.message}</div>*/}
+                                    {/*<input*/}
+                                    {/*            {...register("password", {*/}
+                                    {/*                required: "Field is not required",*/}
+                                    {/*                minLength: {*/}
+                                    {/*                    value: 8,*/}
+                                    {/*                    message: "Password must have at least 8 characters",*/}
+                                    {/*                },*/}
+                                    {/*                pattern: {*/}
+                                    {/*                    value: /(?=.*[A-Z])/g,*/}
+                                    {/*                    message:*/}
+                                    {/*                        "Password must contain at least one capital letter ",*/}
+                                    {/*                },*/}
+                                    {/*            })}*/}
+                                    {/*        />*/}
+                                    {/*<div className="error">{errors["password"]?.message}</div>*/}
+                                    <input {...register("password")} />
+                                    <div className="error"> {errors.password?.message}</div>
 
 
                                 </div>
                                 {active ? (
                                     <div className="input_row">
                                         <label>Email Address</label>
-                                        <input
-                                            {...register("email", {
-                                                required: "ПField is not required",
-                                                pattern: {
-                                                    value:
-                                                        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                                    message: " Incorrect email",
-                                                },
-                                            })}
-                                        />
-                                        {/*<div className={s.error}>{errors?.email?.message}</div>*/}
+                                        {/*<input*/}
+                                        {/*    {...register("email", {*/}
+                                        {/*        required: "ПField is not required",*/}
+                                        {/*        pattern: {*/}
+                                        {/*            value:*/}
+                                        {/*                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,*/}
+                                        {/*            message: " Incorrect email",*/}
+                                        {/*        },*/}
+                                        {/*    })}*/}
+                                        {/*/>*/}
+                                        {/*<div className="error">{errors["email"]?.message}</div>   */}
+                                        <input {...register("email")} />
+                                        <div className="error"> {errors.email?.message}</div>
                                     </div>
                                 ) : (
                                     <div className="form_group">
@@ -149,6 +170,7 @@ export const Register = ({ title, onClose}: ModalProps) => {
                                     </>
                                 )}
                             </form>
+
                         </div>
                     </div>
                 </div>

@@ -136,7 +136,7 @@
     /*width: 50%;*/
     /*display: flex;*/
     /*justify-content: center;*/
-    /*!*background-color: #000000;*!*/
+
     /*border: none;*/
     /*font-size: 14px;*/
     /*font-weight: bold;*/
@@ -157,9 +157,13 @@
     font-size: 18px;
     color: white;
 }
+.btn input:active{
+    background-color: #1a1919;
+}
 .reg_btn{
     width: 130px;
     padding: 5px 10px;
+    cursor: pointer;
 }
 .forgot_pass{
     border-top: 1px solid #615f6c;

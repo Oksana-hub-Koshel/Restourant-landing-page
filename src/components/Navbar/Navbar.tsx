@@ -41,7 +41,7 @@ const Navbar = () => {
           </li>
       </ul>
       <div className="log_link_block">
-          {modal &&  <Register title="Hello" onClose={()=>setModal(false)}/>}
+          {modal &&  <Register  onClose={()=>setModal(false)} />}
           <a onClick={()=> setModal(true)}>Login / Register</a>
 
           <div />
