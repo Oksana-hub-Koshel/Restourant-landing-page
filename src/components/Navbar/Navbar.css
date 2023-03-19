@@ -40,7 +40,7 @@
 }
 .log_link_block{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 .log_link_block a{
@@ -52,11 +52,11 @@
 .log_link_block a:hover{
     border-bottom: 1px solid gold;
 }
-.log_link_block div{
-    width: 1px;
-    height: 30px;
-    background-color: var(--color-grey);
-}
+/*.log_link_block div{*/
+/*    width: 1px;*/
+/*    height: 30px;*/
+/*    background-color: var(--color-grey);*/
+/*}*/
 
 .app__navbar_smallscreen {
     display: none;

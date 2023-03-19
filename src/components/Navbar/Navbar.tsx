@@ -6,9 +6,14 @@ import images from "../../constants/images";
 
 import { Link, animateScroll as scroll } from "react-scroll";
 
+import {Register} from "../../container/Authorization/Register/Register";
+
+
+
 
 const Navbar = () => {
     const [toogleMenu, setToogleMenu] = useState(false);
+    const  [modal, setModal]=useState(false)
 
     const  scrollToTop = () => {
         scroll.scrollToTop();
@@ -36,10 +41,10 @@ const Navbar = () => {
           </li>
       </ul>
       <div className="log_link_block">
-        <Link to="/login" className="log_link">
-          Log In / Register
-        </Link>
-        <div />
+          {modal &&  <Register title="Hello" onClose={()=>setModal(false)}/>}
+          <a onClick={()=> setModal(true)}>Login / Register</a>
+
+          <div />
         <Link to="/book" className="book_table">
           Book table
         </Link>
